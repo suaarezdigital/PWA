@@ -104,7 +104,30 @@ section:last-of-type{border-bottom:none;}
 .res-row{display:flex;gap:20px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line);}
 .res-row:first-child{border-top:none;}
 .res-pct{font-size:1.4rem;font-weight:800;width:64px;flex-shrink:0;}
-.res-tag{font-size:13.5px;font-weight:700;padding-top:4px;}
+.res-tag{font-size:13.5px;font-weight:700;padding-top:4px;flex:1;line-height:1.45;}
+
+/* ============ pregunta realizada ============ */
+.q-block{margin-top:32px;}
+.q-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-soft);margin-bottom:8px;}
+.q-text{font-size:16.5px;font-weight:700;color:var(--ink);max-width:560px;line-height:1.5;}
+.q-sample{font-family:var(--f-mono);font-size:11px;color:var(--gray-soft);margin-top:10px;}
+.q-note{font-family:var(--f-mono);font-size:11px;color:var(--gray-soft);margin-top:10px;max-width:520px;line-height:1.5;}
+
+/* participant counts on result rows */
+.res-count{display:block;font-family:var(--f-mono);font-size:11px;color:var(--gray-soft);margin-top:3px;font-weight:500;}
+
+/* attributed verbalizations */
+.v-attr{margin-top:9px;font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--gray-soft);font-style:normal;font-weight:600;}
+
+/* patron observado box (amber) */
+.pattern-box{margin-top:26px;padding:18px 22px;background:var(--amber-light);border-radius:14px;max-width:560px;}
+.pattern-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--amber-text);font-weight:700;}
+.pattern-txt{margin-top:8px;font-size:14.5px;line-height:1.6;color:#5c3d05;font-weight:500;}
+
+/* subsection inside 'así resuelven hoy' */
+.sub-block{margin-top:44px;}
+.sub-block:first-of-type{margin-top:36px;}
+.sub-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--green-text);font-weight:700;margin-bottom:14px;}
 
 .insight-box{margin-top:30px;padding:18px 22px;background:var(--blue-light);border-radius:14px;max-width:560px;}
 .insight-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#3554b0;font-weight:700;}
@@ -161,7 +184,7 @@ section:last-of-type{border-bottom:none;}
 <!-- ============ HERO ============ -->
 <section id="hero" class="screen" style="border-bottom:none;">
   <div class="container">
-    <h1 class="hero-title">¿Puede un enlace de pago cambiar un hábito que los usuarios ya consideran confiable?</h1>
+    <h1 class="hero-title">Las personas no buscan que alguien pague por ellas. Buscan recibir ayuda sin perder el control del pago.</h1>
     <p class="hero-sub">Investigación realizada con clientes de Banco Azteca para entender si un enlace de pago puede convertirse en una alternativa al proceso que actualmente utilizan cuando otra persona desea ayudarlos a pagar su préstamo.</p>
   </div>
 </section>
@@ -207,26 +230,44 @@ section:last-of-type{border-bottom:none;}
 <section id="hoy">
   <div class="container">
     <div class="eyebrow"><span class="n">02</span>🔁 El comportamiento actual</div>
-    <h2 class="sec-title">¿Cómo resuelven este problema hoy, antes de que exista un enlace?</h2>
-    <p class="sec-sub">Cuando alguien necesita ayuda para pagar su préstamo, el proceso actual ya funciona — a su manera.</p>
+    <h2 class="sec-title">Así resuelven el problema hoy, antes de que exista un enlace.</h2>
+    <p class="sec-sub">Este es el contexto de comportamiento que explica por qué aparecen los hallazgos que siguen. Las gráficas usan las respuestas reales de los 15 participantes.</p>
 
-    <div class="flow">
-      <div class="flow-step"><div class="flow-line"></div>Necesitan dinero.</div>
-      <div class="flow-step"><div class="flow-line"></div>Piden ayuda a un familiar o conocido.</div>
-      <div class="flow-step"><div class="flow-line"></div>Reciben una <b>transferencia SPEI</b>.</div>
-      <div class="flow-step"><div class="flow-line"></div>Ellos mismos realizan el pago del préstamo.</div>
-      <div class="flow-step final">Confirman que el pago quedó aplicado.</div>
+    <div class="sub-block">
+      <div class="sub-lbl">① Cómo pagan normalmente</div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-line"></div>Necesitan dinero.</div>
+        <div class="flow-step"><div class="flow-line"></div>Piden ayuda a un familiar o conocido.</div>
+        <div class="flow-step"><div class="flow-line"></div>Reciben una <b>transferencia SPEI</b>.</div>
+        <div class="flow-step"><div class="flow-line"></div>Ellos mismos realizan el pago del préstamo.</div>
+        <div class="flow-step final">Confirman que el pago quedó aplicado.</div>
+      </div>
     </div>
 
-    <p class="big-insight">Los usuarios no delegan el pago.<span class="soft">Delegan únicamente el dinero.</span></p>
-
-    <div class="verbal-lbl">💬 Verbalizaciones</div>
-    <div class="verbal-grid">
-      <div class="verbal-card">"Prefiero que me transfieran y yo hago el pago."</div>
-      <div class="verbal-card">"Así sé que sí quedó."</div>
-      <div class="verbal-card">"Yo quiero tener el control."</div>
-      <div class="verbal-card">"Es más seguro hacerlo yo."</div>
+    <div class="sub-block">
+      <div class="sub-lbl">② Qué hacen cuando no tienen dinero suficiente</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="age-list" style="margin-top:14px;">
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Transferencia SPEI</div><div class="age-track"><div class="age-fill" style="width:73.3%;"></div></div><div class="age-pct">11/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Efectivo</div><div class="age-track"><div class="age-fill" style="width:13.3%;"></div></div><div class="age-pct">2/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Referencia en sucursal</div><div class="age-track"><div class="age-fill" style="width:6.7%;"></div></div><div class="age-pct">1/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Esperar a reunir el dinero</div><div class="age-track"><div class="age-fill" style="width:6.7%;"></div></div><div class="age-pct">1/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Código QR</div><div class="age-track"><div class="age-fill" style="width:0%;"></div></div><div class="age-pct">0/15</div></div>
+      </div>
     </div>
+
+    <div class="sub-block">
+      <div class="sub-lbl">③ Cómo prefieren que otra persona los ayude</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="age-list" style="margin-top:14px;">
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Transferencia SPEI</div><div class="age-track"><div class="age-fill" style="width:66.7%;"></div></div><div class="age-pct">10/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Enlace de pago (nuevo)</div><div class="age-track"><div class="age-fill" style="width:20%;background:var(--green);"></div></div><div class="age-pct">3/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Código QR</div><div class="age-track"><div class="age-fill" style="width:6.7%;"></div></div><div class="age-pct">1/15</div></div>
+        <div class="age-row" style="grid-template-columns:190px 1fr 50px;"><div class="age-range" style="width:190px;font-size:12.5px;">Efectivo</div><div class="age-track"><div class="age-fill" style="width:6.7%;"></div></div><div class="age-pct">1/15</div></div>
+      </div>
+    </div>
+
+    <p class="big-insight" style="margin-top:44px;">Piden el dinero.<span class="soft">No delegan el pago.</span></p>
   </div>
 </section>
 
@@ -251,20 +292,72 @@ section:last-of-type{border-bottom:none;}
 <section class="screen">
   <div class="container">
     <div class="f-eyebrow"><span class="dot"></span>Hallazgo 01 de 05</div>
-    <div class="f-num">67%</div>
-    <h3 class="f-title">Los usuarios consideran útil la funcionalidad.</h3>
-    <p class="f-body">Sin embargo, eso no significa que quieran abandonar el proceso actual.</p>
+    <h3 class="f-title" style="margin-top:22px;">Los usuarios quieren mantener el control del pago.</h3>
+    <p class="f-body">Cuando otra persona desea ayudarlos, la mayoría prefiere recibir el dinero y realizar ellos mismos el pago.</p>
 
-    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="q-block">
+      <div class="q-lbl">❓ Pregunta 1</div>
+      <div class="q-text">¿Cuándo no tienes dinero suficiente para realizar el pago de tu préstamo, qué harías?</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="res-block">
+        <div class="res-row"><div class="res-pct" style="color:var(--green-text);">73.3%</div><div class="res-tag">Pediría una transferencia (SPEI) y yo realizaría el pago<span class="res-count">11 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">13.3%</div><div class="res-tag">Pediría dinero en efectivo<span class="res-count">2 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Compartiría una referencia para pagar en sucursal<span class="res-count">1 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Esperaría hasta reunir el dinero<span class="res-count">1 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray-soft);">0%</div><div class="res-tag">Compartiría un código QR<span class="res-count">0 de 15 participantes</span></div></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-lbl">❓ Pregunta 2</div>
+      <div class="q-text">Si otra persona fuera a ayudarte a realizar el pago de tu préstamo, ¿cuál preferirías utilizar?</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="res-block">
+        <div class="res-row"><div class="res-pct" style="color:var(--green-text);">66.7%</div><div class="res-tag">Pedir una transferencia (SPEI) y realizar el pago yo mismo<span class="res-count">10 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">20.0%</div><div class="res-tag">Compartir un enlace de pago para que la otra persona pague directamente<span class="res-count">3 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Compartir un código QR para pagar en tienda<span class="res-count">1 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Pedir dinero en efectivo<span class="res-count">1 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray-soft);">0%</div><div class="res-tag">Referencia en sucursal / esperar / sin preferencia<span class="res-count">0 de 15 participantes cada una</span></div></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-lbl">❓ Pregunta 3</div>
+      <div class="q-text">Comparando esta nueva opción con las formas en las que hoy compartirías la información para realizar el pago, ¿cuál elegirías?</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="res-block">
+        <div class="res-row"><div class="res-pct" style="color:var(--green-text);">53.3%</div><div class="res-tag">Pedir una transferencia (SPEI) y realizar el pago yo mismo<span class="res-count">8 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">20.0%</div><div class="res-tag">Compartir un enlace de pago para que la otra persona pague directamente<span class="res-count">3 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">13.3%</div><div class="res-tag">Pedir dinero en efectivo<span class="res-count">2 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Compartir un código QR para pagar en OXXO<span class="res-count">1 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray-soft);">0%</div><div class="res-tag">Referencia en sucursal / sin preferencia<span class="res-count">0 de 15 participantes cada una</span></div></div>
+      </div>
+      <div class="q-note">Nota: las opciones reportadas suman 93.3% (14 de 15 respuestas); el dato original no especifica la opción restante.</div>
+    </div>
+
+    <div class="verbal-lbl">💬 Lo que dijeron los usuarios</div>
     <div class="verbal-grid">
-      <div class="verbal-card">"Sí podría servir."</div>
-      <div class="verbal-card">"Está interesante."</div>
-      <div class="verbal-card">"Sería útil en algunas ocasiones."</div>
+      <div class="verbal-card"><p>"Prefiero que me transfieran y yo hago el pago."</p><div class="v-attr">Mujer · 55+ años</div></div>
+      <div class="verbal-card"><p>"Me sentiría más tranquila haciendo el pago yo misma."</p><div class="v-attr">Mujer · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Porque yo soy quien realiza los pagos."</p><div class="v-attr">Mujer · 25–34 años</div></div>
+      <div class="verbal-card"><p>"Para asegurarme de hacerlo bien yo mismo."</p><div class="v-attr">Hombre · 25–34 años</div></div>
+      <div class="verbal-card"><p>"Para estar seguro que se hizo el pago."</p><div class="v-attr">Hombre · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Es más fácil y yo tengo el control."</p><div class="v-attr">Mujer · 25–34 años</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-lbl">🧩 Patrón observado</div>
+      <p class="pattern-txt">En los tres escenarios evaluados, la mayoría de los participantes prefirió seguir recibiendo el dinero y realizar personalmente el pago.</p>
     </div>
 
     <div class="insight-box">
       <div class="insight-lbl">🔎 Insight</div>
-      <p class="insight-txt">Existe valor percibido. Pero todavía no supera la confianza del método actual.</p>
+      <p class="insight-txt">Los usuarios no buscan delegar el pago. Buscan mantener el control del proceso.</p>
+    </div>
+
+    <div class="producto-box">
+      <div class="producto-lbl">🎯 Implicación para Producto</div>
+      <p class="producto-txt">El diseño del enlace debe conservar esa sensación de control aunque otra persona sea quien realice el pago.</p>
     </div>
   </div>
 </section>
@@ -273,27 +366,40 @@ section:last-of-type{border-bottom:none;}
 <section class="screen">
   <div class="container">
     <div class="f-eyebrow"><span class="dot"></span>Hallazgo 02 de 05</div>
-    <h3 class="f-title" style="margin-top:22px;">El verdadero competidor es SPEI.</h3>
-    <p class="f-body">No competimos contra otra funcionalidad. Competimos contra un hábito.</p>
+    <h3 class="f-title" style="margin-top:22px;">Hoy los usuarios ya tienen una forma de resolver este problema.</h3>
 
-    <div class="tag-row" style="margin-top:8px;">
-      <div class="tag">🔒 Seguridad</div>
-      <div class="tag">🎮 Control</div>
-      <div class="tag">🔁 Costumbre</div>
-      <div class="tag">✅ Confirmación</div>
+    <div class="q-block">
+      <div class="q-lbl">🔁 Comportamiento identificado en las entrevistas</div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-line"></div>Solicitar dinero.</div>
+        <div class="flow-step"><div class="flow-line"></div>Recibir una transferencia (SPEI).</div>
+        <div class="flow-step"><div class="flow-line"></div>Realizar personalmente el pago.</div>
+        <div class="flow-step final">Confirmar que quedó aplicado.</div>
+      </div>
     </div>
 
-    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-lbl">💬 Lo que dijeron los usuarios</div>
     <div class="verbal-grid">
-      <div class="verbal-card">"Siempre lo hago así."</div>
-      <div class="verbal-card">"Ya conozco ese proceso."</div>
-      <div class="verbal-card">"Es la forma en que tengo la certeza."</div>
-      <div class="verbal-card">"Prefiero hacerlo personalmente."</div>
+      <div class="verbal-card"><p>"Siempre lo hago así."</p><div class="v-attr">Mujer · 45–54 años</div></div>
+      <div class="verbal-card"><p>"Ya estoy acostumbrada a que me manden dinero por transferencia."</p><div class="v-attr">Mujer · 45–54 años</div></div>
+      <div class="verbal-card"><p>"Solo me va a prestar dinero; yo tengo que realizar el pago."</p><div class="v-attr">Hombre · 25–34 años</div></div>
+      <div class="verbal-card"><p>"Porque así me aseguro de hacer las cosas bien."</p><div class="v-attr">Hombre · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Para asegurarme de hacerlo bien yo mismo."</p><div class="v-attr">Hombre · 25–34 años</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-lbl">🧩 Patrón observado</div>
+      <p class="pattern-txt">El mismo circuito — solicitar, recibir, pagar, confirmar — se repite en la mayoría de las entrevistas. No estamos introduciendo una funcionalidad en un espacio vacío: estamos intentando modificar un comportamiento que ya satisface la necesidad de los usuarios.</p>
     </div>
 
     <div class="insight-box">
       <div class="insight-lbl">🔎 Insight</div>
-      <p class="insight-txt">Los usuarios ya resolvieron este problema.</p>
+      <p class="insight-txt">El comportamiento actual satisface una necesidad de control y certeza; el enlace deberá ofrecer esas mismas garantías para convertirse en una alternativa viable.</p>
+    </div>
+
+    <div class="producto-box">
+      <div class="producto-lbl">🎯 Implicación para Producto</div>
+      <p class="producto-txt">El enlace debe transmitir el mismo nivel de control y certeza que hoy ofrece el proceso manual, o no logrará desplazarlo.</p>
     </div>
   </div>
 </section>
@@ -302,28 +408,40 @@ section:last-of-type{border-bottom:none;}
 <section class="screen">
   <div class="container">
     <div class="f-eyebrow"><span class="dot"></span>Hallazgo 03 de 05</div>
-    <h3 class="f-title" style="margin-top:22px;">La confianza depende de la información.</h3>
+    <h3 class="f-title" style="margin-top:22px;">Existe interés por la funcionalidad.</h3>
+    <p class="f-body">No necesariamente por cambiar el comportamiento.</p>
 
-    <div class="res-block">
-      <div class="res-row"><div class="res-pct" style="color:var(--green-text);">87%</div><div class="res-tag">✅ Confirmación del pago</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--green-text);">80%</div><div class="res-tag">💰 Monto</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">73%</div><div class="res-tag">📖 Instrucciones</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">60%</div><div class="res-tag">🧾 Comprobante</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">47%</div><div class="res-tag">👤 Nombre del titular</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">33%</div><div class="res-tag">📆 Fecha límite</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">⏳ Vigencia</div></div>
+    <div class="q-block">
+      <div class="q-lbl">📊 Resultado cuantitativo — Percepción de utilidad</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="res-block">
+        <div class="res-row"><div class="res-pct" style="color:var(--green-text);">66.7%</div><div class="res-tag">Muy útil<span class="res-count">10 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">20.0%</div><div class="res-tag">Útil<span class="res-count">3 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">13.3%</div><div class="res-tag">Neutral<span class="res-count">2 de 15 participantes</span></div></div>
+      </div>
     </div>
 
-    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-lbl">💬 Lo que dijeron los usuarios</div>
     <div class="verbal-grid">
-      <div class="verbal-card">"Necesito saber que sí se pagó."</div>
-      <div class="verbal-card">"Quiero ver cuánto voy a pagar."</div>
-      <div class="verbal-card">"Me gustaría tener un comprobante."</div>
+      <div class="verbal-card"><p>"Sí podría servir cuando no tenga dinero suficiente."</p><div class="v-attr">Mujer · 55+ años</div></div>
+      <div class="verbal-card"><p>"Sería útil cuando un familiar quiera ayudarme."</p><div class="v-attr">Mujer · 45–54 años</div></div>
+      <div class="verbal-card"><p>"Lo usaría cuando no pueda realizar el pago personalmente."</p><div class="v-attr">Hombre · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Podría utilizarlo cuando un amigo o familiar quiera ayudarme."</p><div class="v-attr">Mujer · 45–54 años</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-lbl">🧩 Patrón observado</div>
+      <p class="pattern-txt">La utilidad percibida es alta, pero los propios participantes la limitan a escenarios puntuales: falta de dinero o ayuda ocasional de un familiar o amigo.</p>
     </div>
 
     <div class="insight-box">
       <div class="insight-lbl">🔎 Insight</div>
-      <p class="insight-txt">Entre mayor transparencia ofrece el enlace, mayor confianza genera.</p>
+      <p class="insight-txt">El enlace genera valor percibido, pero principalmente para situaciones específicas.</p>
+    </div>
+
+    <div class="producto-box">
+      <div class="producto-lbl">🎯 Implicación para Producto</div>
+      <p class="producto-txt">Posicionar el enlace como alternativa para situaciones específicas, no como reemplazo general del método actual.</p>
     </div>
   </div>
 </section>
@@ -332,26 +450,44 @@ section:last-of-type{border-bottom:none;}
 <section class="screen">
   <div class="container">
     <div class="f-eyebrow"><span class="dot" style="background:var(--red);"></span>Hallazgo 04 de 05</div>
-    <h3 class="f-title" style="margin-top:22px;">Los enlaces todavía generan desconfianza.</h3>
+    <h3 class="f-title" style="margin-top:22px;">Antes de pagar, los usuarios necesitan validar que todo sea correcto.</h3>
 
-    <div class="tag-row" style="margin-top:8px;">
-      <div class="tag">Fraude</div>
-      <div class="tag">Hackeos</div>
-      <div class="tag">Robo de información</div>
-      <div class="tag">Enlaces falsos</div>
+    <div class="q-block">
+      <div class="q-lbl">❓ Pregunta realizada</div>
+      <div class="q-text">¿Qué información considerarías indispensable dentro del enlace?</div>
+      <div class="q-sample">15 respuestas</div>
+      <div class="res-block">
+        <div class="res-row"><div class="res-pct" style="color:var(--green-text);">87%</div><div class="res-tag">✅ Confirmación del pago<span class="res-count">13 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--green-text);">80%</div><div class="res-tag">💰 Monto<span class="res-count">12 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">73%</div><div class="res-tag">📖 Instrucciones<span class="res-count">11 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">60%</div><div class="res-tag">🧾 Comprobante<span class="res-count">9 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">47%</div><div class="res-tag">👤 Nombre del titular<span class="res-count">7 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">33%</div><div class="res-tag">📆 Fecha límite<span class="res-count">5 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">⏳ Vigencia<span class="res-count">1 de 15 participantes</span></div></div>
+      </div>
     </div>
 
-    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-lbl">💬 Lo que dijeron los usuarios</div>
     <div class="verbal-grid">
-      <div class="verbal-card">"No abriría un enlace si no sé quién lo envió."</div>
-      <div class="verbal-card">"Hoy hay muchos fraudes."</div>
-      <div class="verbal-card">"¿Cómo sé que sí pertenece al banco?"</div>
-      <div class="verbal-card">"Me daría desconfianza."</div>
+      <div class="verbal-card"><p>"Necesito saber que sí se pagó."</p><div class="v-attr">Mujer · 25–34 años</div></div>
+      <div class="verbal-card"><p>"Quiero saber cuánto voy a pagar."</p><div class="v-attr">Mujer · 55+ años</div></div>
+      <div class="verbal-card"><p>"Me gustaría tener un comprobante."</p><div class="v-attr">Hombre · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Quiero instrucciones claras para realizar el pago."</p><div class="v-attr">Hombre · 25–34 años</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-lbl">🧩 Patrón observado</div>
+      <p class="pattern-txt">Las categorías con mayor prioridad — confirmación, monto e instrucciones — están directamente relacionadas con validar que el pago se realizó correctamente.</p>
     </div>
 
     <div class="insight-box red">
       <div class="insight-lbl">🔎 Insight</div>
-      <p class="insight-txt">El reto comienza antes del flujo de pago. Comienza construyendo confianza.</p>
+      <p class="insight-txt">Los participantes priorizan la información que les permite validar que el pago será correcto antes de continuar.</p>
+    </div>
+
+    <div class="producto-box">
+      <div class="producto-lbl">🎯 Implicación para Producto</div>
+      <p class="producto-txt">Mostrar monto, instrucciones, comprobante y confirmación inmediata del pago como elementos indispensables del enlace.</p>
     </div>
   </div>
 </section>
@@ -360,28 +496,52 @@ section:last-of-type{border-bottom:none;}
 <section class="screen">
   <div class="container">
     <div class="f-eyebrow"><span class="dot" style="background:var(--amber);"></span>Hallazgo 05 de 05</div>
-    <h3 class="f-title" style="margin-top:22px;">El enlace no reemplazará el proceso actual.</h3>
+    <h3 class="f-title" style="margin-top:22px;">La principal barrera sigue siendo la confianza.</h3>
 
-    <div class="res-block">
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">47%</div><div class="res-tag">Lo usaría rara vez</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">40%</div><div class="res-tag">Algunas veces</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">Frecuentemente</div></div>
-      <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">Nunca</div></div>
+    <div class="tag-row" style="margin-top:8px;">
+      <div class="tag">Fraude</div>
+      <div class="tag">Enlaces desconocidos</div>
+      <div class="tag">Robo de información / privacidad</div>
+      <div class="tag">Confirmación del pago</div>
     </div>
 
-    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-lbl">💬 Lo que dijeron los usuarios</div>
     <div class="verbal-grid">
-      <div class="verbal-card">"Solo cuando no pueda hacer el pago."</div>
-      <div class="verbal-card">"Si estoy fuera de la ciudad."</div>
-      <div class="verbal-card">"Cuando alguien quiera ayudarme."</div>
+      <div class="verbal-card"><p>"No abriría un enlace desconocido."</p><div class="v-attr">Mujer · 35–44 años</div></div>
+      <div class="verbal-card"><p>"No sabría cómo verificar que es verdadero."</p><div class="v-attr">Mujer · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Me preocupa que mis datos estén vulnerables."</p><div class="v-attr">Hombre · 35–44 años</div></div>
+      <div class="verbal-card"><p>"Que no se vea reflejado de inmediato el pago."</p><div class="v-attr">Mujer · 45–54 años</div></div>
+      <div class="verbal-card"><p>"No me gusta compartir información de mis deudas."</p><div class="v-attr">Mujer · 25–34 años</div></div>
     </div>
 
-    <div class="insight-box">
+    <div class="pattern-box">
+      <div class="pattern-lbl">🧩 Patrón observado</div>
+      <p class="pattern-txt">Las preocupaciones se agrupan en cuatro temas recurrentes: fraude, desconfianza hacia enlaces desconocidos, riesgo de robo de información / privacidad, y necesidad de confirmación inmediata.</p>
+    </div>
+
+    <div class="insight-box red">
       <div class="insight-lbl">🔎 Insight</div>
-      <p class="insight-txt">Los usuarios lo visualizan como una solución para situaciones específicas. No como su forma habitual de pago.</p>
+      <p class="insight-txt">La confianza debe construirse antes del flujo de pago.</p>
+    </div>
+
+    <div class="producto-box">
+      <div class="producto-lbl">🎯 Implicación para Producto</div>
+      <p class="producto-txt">Reducir incertidumbre y hacer evidente el estado del pago en cada paso, antes de solicitar cualquier acción del usuario.</p>
+    </div>
+
+    <div class="q-block" style="margin-top:52px;">
+      <div class="q-lbl">📊 Resultado adicional — Frecuencia de uso esperada</div>
+      <div class="q-sample">15 respuestas · corrección de redondeo</div>
+      <div class="res-block">
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">46.7%</div><div class="res-tag">Lo usaría rara vez<span class="res-count">7 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">40%</div><div class="res-tag">Algunas veces<span class="res-count">6 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Frecuentemente<span class="res-count">1 de 15 participantes</span></div></div>
+        <div class="res-row"><div class="res-pct" style="color:var(--gray);">6.7%</div><div class="res-tag">Nunca<span class="res-count">1 de 15 participantes</span></div></div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ PATRONES ============ -->
 <section id="patrones">
@@ -393,7 +553,7 @@ section:last-of-type{border-bottom:none;}
       <div class="pattern-row"><div class="pattern-name">Control</div><div class="pattern-desc">Los usuarios quieren seguir realizando personalmente el pago.</div></div>
       <div class="pattern-row"><div class="pattern-name">Confianza</div><div class="pattern-desc">La seguridad pesa más que la conveniencia.</div></div>
       <div class="pattern-row"><div class="pattern-name">Confirmación</div><div class="pattern-desc">Necesitan evidencia inmediata de que el pago fue aplicado.</div></div>
-      <div class="pattern-row"><div class="pattern-name">Transparencia</div><div class="pattern-desc">Más información equivale a mayor confianza.</div></div>
+      <div class="pattern-row"><div class="pattern-name">Validación</div><div class="pattern-desc">Los usuarios priorizan la información que les permite comprobar que el pago será correcto.</div></div>
       <div class="pattern-row"><div class="pattern-name">Hábito</div><div class="pattern-desc">El comportamiento actual ya satisface la necesidad.</div></div>
     </div>
   </div>
@@ -412,6 +572,9 @@ section:last-of-type{border-bottom:none;}
       <div class="idea">
         <div class="strike">No competimos contra una funcionalidad.</div>
         <div class="replace">Competimos contra un hábito.</div>
+      </div>
+      <div class="idea">
+        <div class="solo">El comportamiento actual ya satisface una necesidad de control y certeza. El enlace deberá ofrecer esas mismas garantías para convertirse en una alternativa viable.</div>
       </div>
       <div class="idea">
         <div class="solo">El éxito dependerá mucho más de transmitir confianza que de reducir pasos.</div>
