@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los usuarios ya resolvieron este problema — Banco Azteca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --bg:#f6f7f9;
+  --surface:#ffffff;
+  --ink:#15171c;
+  --gray:#6b7280;
+  --gray-soft:#9aa0ab;
+  --line:#e6e8ec;
+
+  --green:#0f9d58; --green-light:#e3f6ea; --green-text:#0a7a44;
+  --amber:#d97706; --amber-light:#fdf1dc; --amber-text:#a15c05;
+  --red:#dc2626;   --red-light:#fbe4e4;   --red-text:#b91c1c;
+  --blue:#3b6fe0;  --blue-light:#e7edfc;
+
+  --f-display:'Inter', sans-serif;
+  --f-mono:'IBM Plex Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--bg);}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-display);font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.55;}
+::selection{background:var(--green);color:#fff;}
+h1,h2,h3{font-family:var(--f-display);letter-spacing:-.02em;line-height:1.2;}
+
+.container{max-width:820px;margin:0 auto;padding:0 24px;}
+.topbar{font-family:var(--f-mono);font-size:11px;color:var(--gray);letter-spacing:.03em;padding:18px 0;border-bottom:1px solid var(--line);background:var(--surface);}
+
+section{padding:70px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0;}
+
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--green-text);font-weight:600;display:flex;align-items:center;gap:8px;}
+.eyebrow .n{background:var(--green-light);color:var(--green-text);border-radius:6px;padding:2px 8px;font-weight:700;}
+
+/* ============ hero ============ */
+#hero{min-height:100vh;}
+.hero-title{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;max-width:760px;line-height:1.2;}
+.hero-sub{margin-top:22px;font-size:16.5px;color:var(--gray);max-width:600px;line-height:1.7;}
+
+/* ============ generic titles ============ */
+.sec-title{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:700;max-width:700px;margin-top:14px;}
+.sec-sub{margin-top:12px;font-size:15px;color:var(--gray);max-width:640px;line-height:1.65;}
+
+/* ============ muestra ============ */
+.stat-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.stat-box{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:var(--surface);}
+.stat-box .num{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;}
+.stat-box .lbl{margin-top:6px;font-size:12.5px;color:var(--gray);}
+
+.bar-split{display:flex;height:14px;border-radius:8px;overflow:hidden;margin-top:14px;}
+.bar-split span{height:100%;}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;}
+.legend div{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--gray);}
+.legend i{width:9px;height:9px;border-radius:2px;display:inline-block;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:32px;}
+.block-label{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-soft);margin-bottom:12px;}
+.age-list{display:flex;flex-direction:column;gap:10px;}
+.age-row{display:grid;grid-template-columns:60px 1fr 34px;align-items:center;gap:12px;}
+.age-range{font-family:var(--f-mono);font-size:12px;color:var(--gray);}
+.age-track{height:9px;background:var(--bg);border-radius:6px;overflow:hidden;}
+.age-fill{height:100%;background:var(--blue);border-radius:6px;}
+.age-pct{font-size:12.5px;font-weight:700;text-align:right;color:var(--ink);}
+
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.tag{font-family:var(--f-mono);font-size:12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:7px 15px;color:var(--ink);}
+
+/* ============ flow ============ */
+.flow{margin-top:36px;display:flex;flex-direction:column;gap:0;max-width:460px;}
+.flow-step{font-size:15.5px;color:var(--ink);padding:12px 0;position:relative;padding-left:26px;}
+.flow-step::before{content:'';position:absolute;left:4px;top:20px;width:7px;height:7px;border-radius:50%;background:var(--gray-soft);}
+.flow-step.final::before{background:var(--green);}
+.flow-line{position:absolute;left:7px;top:29px;bottom:-6px;width:1px;background:var(--line);}
+.flow-step:last-child .flow-line{display:none;}
+
+.big-insight{margin-top:56px;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;line-height:1.32;max-width:640px;}
+.big-insight .soft{font-weight:500;color:var(--gray);display:block;margin-top:6px;font-size:.72em;}
+
+.verbal-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-soft);margin-top:32px;}
+.verbal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.verbal-card{padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;font-size:13.5px;font-style:italic;color:var(--ink);line-height:1.5;}
+
+/* ============ por que investigar ============ */
+.why-text{margin-top:26px;font-size:16px;color:var(--ink);max-width:620px;line-height:1.75;}
+.why-text + .why-text{margin-top:16px;}
+
+/* ============ hallazgo (full screen) ============ */
+.f-eyebrow{font-family:var(--f-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-soft);display:flex;align-items:center;gap:10px;}
+.f-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.f-num{font-size:clamp(3.4rem,10vw,5.5rem);font-weight:800;color:var(--green-text);line-height:1;margin-top:14px;}
+.f-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-top:14px;max-width:660px;line-height:1.3;}
+.f-body{margin-top:18px;font-size:16px;color:var(--gray);max-width:560px;line-height:1.7;}
+
+.res-block{margin-top:26px;max-width:520px;}
+.res-row{display:flex;gap:20px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line);}
+.res-row:first-child{border-top:none;}
+.res-pct{font-size:1.4rem;font-weight:800;width:64px;flex-shrink:0;}
+.res-tag{font-size:13.5px;font-weight:700;padding-top:4px;}
+
+.insight-box{margin-top:30px;padding:18px 22px;background:var(--blue-light);border-radius:14px;max-width:560px;}
+.insight-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#3554b0;font-weight:700;}
+.insight-txt{margin-top:8px;font-size:14.5px;line-height:1.6;color:#1f2f5c;font-weight:500;}
+.insight-box.red{background:var(--red-light);}
+.insight-box.red .insight-lbl{color:var(--red-text);}
+.insight-box.red .insight-txt{color:#7a1c1c;}
+
+.producto-box{margin-top:22px;padding:18px 22px;background:var(--ink);border-radius:14px;max-width:560px;}
+.producto-lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#7ee2a8;font-weight:700;}
+.producto-txt{margin-top:8px;font-size:14px;line-height:1.6;color:#f2f3f5;font-weight:500;}
+
+/* ============ patrones ============ */
+.pattern-list{margin-top:36px;display:flex;flex-direction:column;}
+.pattern-row{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:20px 0;border-top:1px solid var(--line);}
+.pattern-row:first-child{border-top:none;}
+.pattern-name{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--green-text);font-weight:700;padding-top:2px;}
+.pattern-desc{font-size:15px;color:var(--ink);line-height:1.6;}
+
+/* ============ significa producto ============ */
+.idea-stack{display:flex;flex-direction:column;margin-top:36px;}
+.idea{padding:36px 0;border-top:1px solid var(--line);}
+.idea:first-child{border-top:none;padding-top:0;}
+.idea .strike{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--gray-soft);font-weight:600;text-decoration:line-through;text-decoration-color:var(--gray-soft);}
+.idea .replace{margin-top:8px;font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:800;color:var(--ink);}
+.idea .solo{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:800;color:var(--ink);}
+
+/* ============ recomendaciones ============ */
+.rec-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;}
+.rec-col{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:20px 20px;}
+.rec-col h4{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--green-text);font-weight:700;margin-bottom:14px;}
+.rec-col div{font-size:13.5px;color:var(--gray);line-height:1.55;padding:9px 0;border-top:1px dashed var(--line);}
+.rec-col div:first-of-type{border-top:none;}
+
+/* ============ cierre ============ */
+#cierre{text-align:center;padding:90px 0 64px;}
+.cierre-txt{font-size:clamp(1.15rem,2.1vw,1.5rem);font-weight:700;max-width:660px;margin:0 auto;line-height:1.5;}
+.cierre-txt em{font-style:italic;color:var(--green-text);}
+.footer-meta{margin-top:36px;font-family:var(--f-mono);font-size:11px;color:var(--gray-soft);letter-spacing:.06em;text-transform:uppercase;}
+
+@media(max-width:900px){
+  .stat-trio{grid-template-columns:1fr;}
+  .grid-2{grid-template-columns:1fr;gap:32px;}
+  .verbal-grid{grid-template-columns:1fr;}
+  .rec-cols{grid-template-columns:1fr;}
+  .pattern-row{grid-template-columns:1fr;gap:8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">🔍 Investigación UX · Banco Azteca · 2026</div></div>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="screen" style="border-bottom:none;">
+  <div class="container">
+    <h1 class="hero-title">¿Puede un enlace de pago cambiar un hábito que los usuarios ya consideran confiable?</h1>
+    <p class="hero-sub">Investigación realizada con clientes de Banco Azteca para entender si un enlace de pago puede convertirse en una alternativa al proceso que actualmente utilizan cuando otra persona desea ayudarlos a pagar su préstamo.</p>
+  </div>
+</section>
+
+<!-- ============ LA INVESTIGACIÓN ============ -->
+<section id="muestra">
+  <div class="container">
+    <div class="eyebrow"><span class="n">01</span>📋 La investigación</div>
+    <h2 class="sec-title">Quince clientes reales, con préstamo activo.</h2>
+
+    <div class="stat-trio">
+      <div class="stat-box"><div class="num">15</div><div class="lbl">👤 Participantes</div></div>
+      <div class="stat-box"><div class="num">100%</div><div class="lbl">🏦 Con préstamo activo</div></div>
+      <div class="stat-box"><div class="num">60/40</div><div class="lbl">👥 Hombres / Mujeres</div></div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="block-label">Distribución de género</div>
+        <div class="bar-split"><span style="width:60%;background:var(--blue);"></span><span style="width:40%;background:var(--green);"></span></div>
+        <div class="legend"><div><i style="background:var(--blue);"></i>9 hombres — 60%</div><div><i style="background:var(--green);"></i>6 mujeres — 40%</div></div>
+      </div>
+      <div>
+        <div class="block-label">Distribución por edad</div>
+        <div class="age-list">
+          <div class="age-row"><div class="age-range">18–24</div><div class="age-track"><div class="age-fill" style="width:16.7%;"></div></div><div class="age-pct">7%</div></div>
+          <div class="age-row"><div class="age-range">25–34</div><div class="age-track"><div class="age-fill" style="width:100%;"></div></div><div class="age-pct">40%</div></div>
+          <div class="age-row"><div class="age-range">35–44</div><div class="age-track"><div class="age-fill" style="width:66.7%;"></div></div><div class="age-pct">27%</div></div>
+          <div class="age-row"><div class="age-range">45–54</div><div class="age-track"><div class="age-fill" style="width:33.3%;"></div></div><div class="age-pct">13%</div></div>
+          <div class="age-row"><div class="age-range">55+</div><div class="age-track"><div class="age-fill" style="width:33.3%;"></div></div><div class="age-pct">13%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <div class="tag">🔎 Investigación exploratoria</div>
+      <div class="tag">🗣️ Entrevistas semiestructuradas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO RESUELVEN ESTE PROBLEMA HOY ============ -->
+<section id="hoy">
+  <div class="container">
+    <div class="eyebrow"><span class="n">02</span>🔁 El comportamiento actual</div>
+    <h2 class="sec-title">¿Cómo resuelven este problema hoy, antes de que exista un enlace?</h2>
+    <p class="sec-sub">Cuando alguien necesita ayuda para pagar su préstamo, el proceso actual ya funciona — a su manera.</p>
+
+    <div class="flow">
+      <div class="flow-step"><div class="flow-line"></div>Necesitan dinero.</div>
+      <div class="flow-step"><div class="flow-line"></div>Piden ayuda a un familiar o conocido.</div>
+      <div class="flow-step"><div class="flow-line"></div>Reciben una <b>transferencia SPEI</b>.</div>
+      <div class="flow-step"><div class="flow-line"></div>Ellos mismos realizan el pago del préstamo.</div>
+      <div class="flow-step final">Confirman que el pago quedó aplicado.</div>
+    </div>
+
+    <p class="big-insight">Los usuarios no delegan el pago.<span class="soft">Delegan únicamente el dinero.</span></p>
+
+    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-grid">
+      <div class="verbal-card">"Prefiero que me transfieran y yo hago el pago."</div>
+      <div class="verbal-card">"Así sé que sí quedó."</div>
+      <div class="verbal-card">"Yo quiero tener el control."</div>
+      <div class="verbal-card">"Es más seguro hacerlo yo."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ INVESTIGAR ============ -->
+<section id="porque">
+  <div class="container">
+    <div class="eyebrow"><span class="n">03</span>🎯 Por qué decidimos investigar</div>
+    <p class="why-text">Banco Azteca está explorando una nueva funcionalidad que permitiría compartir un enlace de pago, para que otra persona pueda realizar directamente el pago de un préstamo — sin pasar primero por una transferencia SPEI.</p>
+    <p class="why-text">Esta investigación busca entender si esa propuesta realmente puede modificar el comportamiento que acabamos de describir, o si el hábito actual es demasiado fuerte para cambiarlo.</p>
+  </div>
+</section>
+
+<!-- ============ LO QUE DESCUBRIMOS — INTRO ============ -->
+<section id="hallazgos-intro" style="border-bottom:none;padding-bottom:0;">
+  <div class="container">
+    <div class="eyebrow"><span class="n">04</span>🔎 Lo que descubrimos</div>
+    <h2 class="sec-title">Cinco hallazgos que explican si el enlace tiene, o no, una oportunidad real.</h2>
+  </div>
+</section>
+
+<!-- ============ HALLAZGO 1 ============ -->
+<section class="screen">
+  <div class="container">
+    <div class="f-eyebrow"><span class="dot"></span>Hallazgo 01 de 05</div>
+    <div class="f-num">67%</div>
+    <h3 class="f-title">Los usuarios consideran útil la funcionalidad.</h3>
+    <p class="f-body">Sin embargo, eso no significa que quieran abandonar el proceso actual.</p>
+
+    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-grid">
+      <div class="verbal-card">"Sí podría servir."</div>
+      <div class="verbal-card">"Está interesante."</div>
+      <div class="verbal-card">"Sería útil en algunas ocasiones."</div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-lbl">🔎 Insight</div>
+      <p class="insight-txt">Existe valor percibido. Pero todavía no supera la confianza del método actual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALLAZGO 2 ============ -->
+<section class="screen">
+  <div class="container">
+    <div class="f-eyebrow"><span class="dot"></span>Hallazgo 02 de 05</div>
+    <h3 class="f-title" style="margin-top:22px;">El verdadero competidor es SPEI.</h3>
+    <p class="f-body">No competimos contra otra funcionalidad. Competimos contra un hábito.</p>
+
+    <div class="tag-row" style="margin-top:8px;">
+      <div class="tag">🔒 Seguridad</div>
+      <div class="tag">🎮 Control</div>
+      <div class="tag">🔁 Costumbre</div>
+      <div class="tag">✅ Confirmación</div>
+    </div>
+
+    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-grid">
+      <div class="verbal-card">"Siempre lo hago así."</div>
+      <div class="verbal-card">"Ya conozco ese proceso."</div>
+      <div class="verbal-card">"Es la forma en que tengo la certeza."</div>
+      <div class="verbal-card">"Prefiero hacerlo personalmente."</div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-lbl">🔎 Insight</div>
+      <p class="insight-txt">Los usuarios ya resolvieron este problema.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALLAZGO 3 ============ -->
+<section class="screen">
+  <div class="container">
+    <div class="f-eyebrow"><span class="dot"></span>Hallazgo 03 de 05</div>
+    <h3 class="f-title" style="margin-top:22px;">La confianza depende de la información.</h3>
+
+    <div class="res-block">
+      <div class="res-row"><div class="res-pct" style="color:var(--green-text);">87%</div><div class="res-tag">✅ Confirmación del pago</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--green-text);">80%</div><div class="res-tag">💰 Monto</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">73%</div><div class="res-tag">📖 Instrucciones</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--amber-text);">60%</div><div class="res-tag">🧾 Comprobante</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">47%</div><div class="res-tag">👤 Nombre del titular</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">33%</div><div class="res-tag">📆 Fecha límite</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">⏳ Vigencia</div></div>
+    </div>
+
+    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-grid">
+      <div class="verbal-card">"Necesito saber que sí se pagó."</div>
+      <div class="verbal-card">"Quiero ver cuánto voy a pagar."</div>
+      <div class="verbal-card">"Me gustaría tener un comprobante."</div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-lbl">🔎 Insight</div>
+      <p class="insight-txt">Entre mayor transparencia ofrece el enlace, mayor confianza genera.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALLAZGO 4 ============ -->
+<section class="screen">
+  <div class="container">
+    <div class="f-eyebrow"><span class="dot" style="background:var(--red);"></span>Hallazgo 04 de 05</div>
+    <h3 class="f-title" style="margin-top:22px;">Los enlaces todavía generan desconfianza.</h3>
+
+    <div class="tag-row" style="margin-top:8px;">
+      <div class="tag">Fraude</div>
+      <div class="tag">Hackeos</div>
+      <div class="tag">Robo de información</div>
+      <div class="tag">Enlaces falsos</div>
+    </div>
+
+    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-grid">
+      <div class="verbal-card">"No abriría un enlace si no sé quién lo envió."</div>
+      <div class="verbal-card">"Hoy hay muchos fraudes."</div>
+      <div class="verbal-card">"¿Cómo sé que sí pertenece al banco?"</div>
+      <div class="verbal-card">"Me daría desconfianza."</div>
+    </div>
+
+    <div class="insight-box red">
+      <div class="insight-lbl">🔎 Insight</div>
+      <p class="insight-txt">El reto comienza antes del flujo de pago. Comienza construyendo confianza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALLAZGO 5 ============ -->
+<section class="screen">
+  <div class="container">
+    <div class="f-eyebrow"><span class="dot" style="background:var(--amber);"></span>Hallazgo 05 de 05</div>
+    <h3 class="f-title" style="margin-top:22px;">El enlace no reemplazará el proceso actual.</h3>
+
+    <div class="res-block">
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">47%</div><div class="res-tag">Lo usaría rara vez</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">40%</div><div class="res-tag">Algunas veces</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">Frecuentemente</div></div>
+      <div class="res-row"><div class="res-pct" style="color:var(--gray);">7%</div><div class="res-tag">Nunca</div></div>
+    </div>
+
+    <div class="verbal-lbl">💬 Verbalizaciones</div>
+    <div class="verbal-grid">
+      <div class="verbal-card">"Solo cuando no pueda hacer el pago."</div>
+      <div class="verbal-card">"Si estoy fuera de la ciudad."</div>
+      <div class="verbal-card">"Cuando alguien quiera ayudarme."</div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-lbl">🔎 Insight</div>
+      <p class="insight-txt">Los usuarios lo visualizan como una solución para situaciones específicas. No como su forma habitual de pago.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PATRONES ============ -->
+<section id="patrones">
+  <div class="container">
+    <div class="eyebrow"><span class="n">05</span>🧩 Patrones</div>
+    <h2 class="sec-title">Cinco comportamientos que se repiten en toda la muestra.</h2>
+
+    <div class="pattern-list">
+      <div class="pattern-row"><div class="pattern-name">Control</div><div class="pattern-desc">Los usuarios quieren seguir realizando personalmente el pago.</div></div>
+      <div class="pattern-row"><div class="pattern-name">Confianza</div><div class="pattern-desc">La seguridad pesa más que la conveniencia.</div></div>
+      <div class="pattern-row"><div class="pattern-name">Confirmación</div><div class="pattern-desc">Necesitan evidencia inmediata de que el pago fue aplicado.</div></div>
+      <div class="pattern-row"><div class="pattern-name">Transparencia</div><div class="pattern-desc">Más información equivale a mayor confianza.</div></div>
+      <div class="pattern-row"><div class="pattern-name">Hábito</div><div class="pattern-desc">El comportamiento actual ya satisface la necesidad.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LO QUE SIGNIFICA PARA EL PRODUCTO ============ -->
+<section id="significa">
+  <div class="container">
+    <div class="eyebrow"><span class="n">06</span>📋 Lo que significa para el producto</div>
+
+    <div class="idea-stack">
+      <div class="idea">
+        <div class="strike">Los usuarios no rechazan el enlace.</div>
+        <div class="replace">Rechazan perder el control.</div>
+      </div>
+      <div class="idea">
+        <div class="strike">No competimos contra una funcionalidad.</div>
+        <div class="replace">Competimos contra un hábito.</div>
+      </div>
+      <div class="idea">
+        <div class="solo">El éxito dependerá mucho más de transmitir confianza que de reducir pasos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOMENDACIONES ============ -->
+<section id="recomendaciones">
+  <div class="container">
+    <div class="eyebrow"><span class="n">07</span>✅ Recomendaciones</div>
+    <h2 class="sec-title">Convertir los hallazgos en decisiones concretas.</h2>
+
+    <div class="rec-cols">
+      <div class="rec-col">
+        <h4>Producto</h4>
+        <div>Priorizar señales de confianza</div>
+        <div>Mostrar identidad oficial de Banco Azteca</div>
+        <div>Mostrar monto</div>
+        <div>Mostrar comprobante</div>
+        <div>Mostrar confirmación inmediata</div>
+      </div>
+      <div class="rec-col">
+        <h4>UX</h4>
+        <div>Reducir incertidumbre</div>
+        <div>Preservar la sensación de control</div>
+        <div>Hacer evidente el estado del pago</div>
+      </div>
+      <div class="rec-col">
+        <h4>Negocio</h4>
+        <div>Posicionar el enlace como alternativa para situaciones específicas</div>
+        <div>No comunicarlo como reemplazo de SPEI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section id="cierre">
+  <div class="container">
+    <p class="cierre-txt">La oportunidad no está en facilitar el pago. <em>Está en generar la confianza suficiente</em> para que los usuarios cambien un hábito que hoy ya consideran seguro.</p>
+    <div class="footer-meta">Banco Azteca — Investigación UX · 2026</div>
+  </div>
+</section>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+document.querySelectorAll('section .container > *').forEach(el=>{
+  gsap.from(el, { y:18, opacity:0, duration:.7, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 90%' } });
+});
+document.querySelectorAll('.bar-split span, .age-fill').forEach(el=>{
+  const w = el.style.width;
+  gsap.fromTo(el, {width:'0%'}, { width:w, duration:1, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 90%' } });
+});
+</script>
+</body>
+</html>
